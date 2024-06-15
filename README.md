@@ -38,3 +38,6 @@ MoreScale
 
 Menu:
 ImGuiMenu
+
+
+![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/2.png)
