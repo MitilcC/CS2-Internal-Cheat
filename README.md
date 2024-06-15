@@ -1,5 +1,5 @@
 # CS2-Internal-Cheat
-A Simple Cheat Written by C++ For Everyone~
+Free and open-source internal cheat for CS2, written in C++, working on Windows
 
 Thanks to Liv's open source, it helped me a lot.
 
