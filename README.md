@@ -10,27 +10,27 @@ If you like this item you can collect and give me stars
 The project is now being perfected
 This project is currently under development and currently contains the following features
 
-Visual:
+Visual
        ShowBox
        ShowHealth
        ShowName
        ShowLine
-Aimbot:
+Aimbot
        Aimbot
        CheckBestTarget
        Hotkeys
 
 Features to be added in the future
 
-Visual:
+Visual
        ShowAmom
        ShowScope
        ShowVisible
        ShowWeapan
        ShowEyeLine
-Aimbot:
+Aimbot
        Client
        AutoFire
        MoreScale
-Menu:
+Menu
        ImGuiMenu
