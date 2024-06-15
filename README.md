@@ -8,36 +8,29 @@ This project uses Kiero's D3D11 hook support library and uses the imgui-based ru
 If you like this item you can collect and give me stars
 
 The project is now being perfected
-This project is currently under development and currently contains the following features
 
-Visual:
-       
-ShowBox
-ShowHealth
-ShowName
-ShowLine
+## Functions
 
-Aimbot:
-Aimbot
-CheckBestTarget
-Hotkeys
+> 1. BoneESP
+>
+> 2. BoxESP
+>
+> 3. AimBot
+>
+> 4. HealthESP
+>
+> 5. NameESP
 
-Features to be added in the future
+## Functions will add in future
 
-Visual:
-ShowAmom
-ShowScope
-ShowVisible
-ShowWeapan
-ShowEyeLine
-
-Aimbot:
-Client
-AutoFire
-MoreScale
-
-Menu:
-ImGuiMenu
-
+> 1. Aimbot(Rcs Client)
+>
+> 2. BoneESP(Draw)
+>
+> 3. MiscFunction
+>
+> 4. MoreVisual
+>
+> 5. ImGuiMenu
 
 ![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/2.png)
