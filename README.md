@@ -21,7 +21,7 @@ The project is now being perfected
 >
 > 5. NameESP
 
-## Functions will add in future
+## Features that will be added in the future
 
 > 1. Aimbot(Rcs Client)
 >
