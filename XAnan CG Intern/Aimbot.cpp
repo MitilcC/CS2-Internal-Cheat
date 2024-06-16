@@ -14,8 +14,10 @@ bool Aimbot::GetBestTarget()
 
 	LocalPlayer.team = Get::PlayerTeam(LocalPlayer.pawn);
 
-	if (!Get::PlayerAlive(LocalPlayer.pawn)) 
+	if (!Get::PlayerAlive(LocalPlayer.pawn))
+	{
 		return false;
+	}
 
 	int Distance = 0;
 	int LastDistance = 999999999;
@@ -27,16 +29,21 @@ bool Aimbot::GetBestTarget()
 
 		Entity.control = Address::GetEntityBase(i);
 
+		if (!Get::PawnAlive(Entity.control))
+		{
+			continue;
+		}
+
 		Entity.pawn = Get::PlayerPawnAddress(Entity.control);
 
 		Entity.team = Get::PlayerTeam(Entity.pawn);
 
 		Entity.health = Get::PlayerHealth(Entity.pawn);
 
-		//if (Get::IsDormant(Entity.pawn))
-		//{
-		//	continue;
-		//}
+		if (Get::IsDormant(Entity.pawn))
+		{
+			continue;
+		}
 
 		if (Menu::TeamCheck && Entity.team == LocalPlayer.team)
 		{
@@ -142,10 +149,9 @@ bool Aimbot::ShotTarget()
 
 bool Aimbot::Start()
 {
+	bool CanAim = GetBestTarget();
 
-	GetBestTarget();
-
-	if (GetAsyncKeyState(Menu::Aimbot::AimKey))
+	if (GetAsyncKeyState(Menu::Aimbot::AimKey) && CanAim)
 	{
 		if (Get::PlayerAlive(Target::addr))
 		{

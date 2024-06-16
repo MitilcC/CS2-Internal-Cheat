@@ -7,7 +7,7 @@
 #include <vector>
 #include <bitset>
 #include <thread>
-
+#include "Console.h"
 
 namespace Aimbot
 {

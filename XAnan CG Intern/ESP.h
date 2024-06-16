@@ -9,6 +9,7 @@
 #include "Ults.h"
 #include <vector>
 #include <bitset>
+#include "Console.h"
 
 namespace ESP
 {

@@ -45,6 +45,7 @@ enum Bone
 namespace Get
 {
 	intptr_t PlayerPawnAddress(intptr_t addr);
+	bool PawnAlive(intptr_t addr);
 	bool PlayerAlive(intptr_t addr);
 	int32_t PlayerTeam(intptr_t addr);
 	int32_t PlayerHealth(intptr_t addr);
@@ -54,6 +55,11 @@ namespace Get
 	std::string PlayerName(intptr_t addr);
 	Vector3 WindowSize();
 	Vector3 LastCameraPos(intptr_t addr);
+}
+
+namespace Set
+{
+	void RadarHack(intptr_t addr);
 }
 
 struct BoneJoint

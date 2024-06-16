@@ -1,5 +1,34 @@
 #include "Entity.h"
 
+std::string string_To_UTF8(const std::string& str);
+
+std::string string_To_UTF8(const std::string& str)
+{
+	int nwLen = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, 0);
+
+	wchar_t* pwBuf = new wchar_t[nwLen + 1];//一定要加1，不然会出现尾巴
+	ZeroMemory(pwBuf, nwLen * 2 + 2);
+
+	::MultiByteToWideChar(CP_ACP, 0, str.c_str(), str.length(), pwBuf, nwLen);
+
+	int nLen = ::WideCharToMultiByte(CP_UTF8, 0, pwBuf, -1, NULL, NULL, NULL, NULL);
+
+	char* pBuf = new char[nLen + 1];
+	ZeroMemory(pBuf, nLen + 1);
+
+	::WideCharToMultiByte(CP_UTF8, 0, pwBuf, nwLen, pBuf, nLen, NULL, NULL);
+
+	std::string retStr(pBuf);
+
+	delete[]pwBuf;
+	delete[]pBuf;
+
+	pwBuf = NULL;
+	pBuf = NULL;
+
+	return retStr;
+}
+
 Vector3 Get::PlayerPos(intptr_t addr)
 {
 	return *reinterpret_cast<Vector3*>(addr + Offset::Pawn::bPos);
@@ -18,6 +47,13 @@ int32_t Get::PlayerTeam(intptr_t addr)
 	int32_t team = Address::ReadInternalMem<int32_t>(addr, { Offset::Pawn::iTeamNum }) ;
 
 	return team;
+
+}
+
+bool Get::PawnAlive(intptr_t addr)
+{
+
+	return Address::ReadInternalMem<int32_t>(addr, { Offset::Pawn::PawnAlive }) == 1;
 
 }
 
@@ -82,8 +118,12 @@ std::string Get::PlayerName(intptr_t addr)
 
 	const std::string entNameBuffer(sEntNamePtr);
 
-	return entNameBuffer;
+
+
+	return string_To_UTF8(entNameBuffer);
 }
+
+
 
 Vector3 Get::WindowSize() 
 {
@@ -98,5 +138,12 @@ Vector3 Get::LastCameraPos(intptr_t addr)
 	return *reinterpret_cast<Vector3*>(addr + Offset::Pawn::vLastClipCameraPos);;
 }
 
+
+void Set::RadarHack(intptr_t addr) 
+{
+	int open = 1;
+	int32_t* SpottedStatus{ reinterpret_cast<int32_t*>(addr + Offset::Pawn::bSpottedByMask) };
+	SpottedStatus = &open;
+}
 
 

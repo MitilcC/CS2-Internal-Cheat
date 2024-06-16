@@ -28,6 +28,7 @@ namespace Offset
 
 	namespace Pawn
 	{
+		inline constexpr intptr_t PawnAlive = cs2_dumper::schemas::client_dll::CCSPlayerController::m_bPawnIsAlive;
 		inline constexpr intptr_t BoneArray{ cs2_dumper::schemas::client_dll::CSkeletonInstance::m_modelState + 0x80 }; // GameSceneNode + BoneArray
 		inline constexpr intptr_t iHealth{ cs2_dumper::schemas::client_dll::C_BaseEntity::m_iHealth };
 		inline constexpr intptr_t pGameSceneNode{ cs2_dumper::schemas::client_dll::C_BaseEntity::m_pGameSceneNode };
@@ -40,6 +41,7 @@ namespace Offset
 		inline constexpr intptr_t IsAlive{ cs2_dumper::schemas::client_dll::CCSPlayerController::m_bPawnIsAlive };
 		inline constexpr intptr_t CurrentArmor{ cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_ArmorValue };
 		inline constexpr intptr_t pClippingWeapon{ cs2_dumper::schemas::client_dll::C_CSPlayerPawnBase::m_pClippingWeapon };
+		inline constexpr intptr_t bSpottedByMask = cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState + cs2_dumper::schemas::client_dll::EntitySpottedState_t::m_bSpottedByMask;	// C_CSPlayerPawn::entitySpottedState + EntitySpottedState_t::bSpottedByMask
 	};
 
 	namespace WeaponBaseData

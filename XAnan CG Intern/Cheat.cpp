@@ -1,15 +1,29 @@
 #include "Cheat.h"
+#include "Console.h"
 
 bool Cheat::Run() 
 {
+	if (Menu::ShowMenu)
+		Menu::start();
+	
+	static std::chrono::time_point LastTimePoint = std::chrono::steady_clock::now();
+	auto CurTimePoint = std::chrono::steady_clock::now();
+
+	if (GetAsyncKeyState(VK_HOME) && CurTimePoint - LastTimePoint >= std::chrono::milliseconds(150))
+	{
+		Menu::ShowMenu = !Menu::ShowMenu;
+		LastTimePoint = CurTimePoint;
+	}
+
+
 	if (GameState::IsMatchStarted())
 	{
-		// Cheat Features
+
 		if (Menu::bAimBot) Aimbot::Start();
+
 		if (Menu::bESP) ESP::Start();
 	}
-	else
-		ImGui::GetBackgroundDrawList()->AddText(ImVec2(200, 100), ImColor(255, 0, 0), std::to_string(GameState::GetMatchState()).c_str());
+
 
 	return true;
 
