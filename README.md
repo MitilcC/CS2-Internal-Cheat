@@ -28,20 +28,20 @@ The project is now being perfected
 > 7. AimCricle
 >
 > 8. LinetoEmery(two types)
+>
+> 9. BoneESP(Draw)
 
 ## Features that will be added in the future
 
 > 1. Aimbot(Rcs Client)
 >
-> 2. BoneESP(Draw)
+> 2. MiscFunction
 >
-> 3. MiscFunction
+> 3. MoreVisual
 >
-> 4. MoreVisual
+> 4. RageBot
 >
-> 5. RageBot
->
-> 6. Hook Createmove and some events
+> 5. Hook Createmove and some events
 
 ## Waring !!!
 The purpose of this project is to learn, please ignore the use for illegal purposes, otherwise at your own risk ！
