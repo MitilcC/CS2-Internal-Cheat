@@ -47,3 +47,5 @@ The project is now being perfected
 The purpose of this project is to learn, please ignore the use for illegal purposes, otherwise at your own risk ！
 
 ![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/2.png)
+
+![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/1.png)
