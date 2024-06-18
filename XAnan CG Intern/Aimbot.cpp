@@ -73,7 +73,7 @@ bool Aimbot::GetBestTarget()
 		{
 			int left = Window.x / 2 - EndPos.x ;
 			int right = Window.y / 2 - EndPos.y;
-			Distance = sqrt(pow(left,2) + pow(right,2));
+			Distance = Math::distance(left,right);
 			if(Distance < LastDistance)
 			{
 				LastDistance = Distance;

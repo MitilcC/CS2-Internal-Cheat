@@ -191,6 +191,10 @@ void Menu::start()
 
 					ImGui::Checkbox("HealthBar", &Menu::ESP::Health);
 
+					ImGui::Checkbox("BoneESP", &Menu::ESP::Bone);
+
+					ImGui::Checkbox("HeadCricle", &Menu::ESP::HeadCricle);
+
 					ImGui::Checkbox("PlayerName", &Menu::ESP::Name);
 
 					ImGui::Checkbox("LineToEnemy", &Menu::ESP::Line);
@@ -216,6 +220,7 @@ void Menu::start()
 						ImGui::ColorEdit4("Filled Color##FilledColor", reinterpret_cast<float*>(&Menu::Color::FilledColor), ImGuiColorEditFlags_NoInputs);
 
 					ImGui::ColorEdit4("Bone Color##BoneColor", reinterpret_cast<float*>(&Menu::Color::BoneColor), ImGuiColorEditFlags_NoInputs);
+					ImGui::ColorEdit4("HeadCricle Color##HeadCricleColor", reinterpret_cast<float*>(&Menu::Color::HeadCricleColor), ImGuiColorEditFlags_NoInputs);
 					ImGui::ColorEdit4("Eye Ray Color##EyeRay", reinterpret_cast<float*>(&Menu::Color::EyeRayColor), ImGuiColorEditFlags_NoInputs);
 					ImGui::ColorEdit4("Name Color Color##Name", reinterpret_cast<float*>(&Menu::Color::NameColor), ImGuiColorEditFlags_NoInputs);
 					ImGui::ColorEdit4("Line to enemy Color##LineToEnemyColor", reinterpret_cast<float*>(&Menu::Color::LineColor), ImGuiColorEditFlags_NoInputs);

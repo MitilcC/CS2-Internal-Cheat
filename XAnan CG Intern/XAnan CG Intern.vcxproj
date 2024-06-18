@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Aimbot.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="Cheat.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="CS2_Dumper\animationsystem.dll.hpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="kiero\minhook\src\hde\table64.h" />
     <ClInclude Include="kiero\minhook\src\trampoline.h" />
     <ClInclude Include="LocalPlayer.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="offsets.h" />
     <ClInclude Include="Address.h" />
@@ -205,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aimbot.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Cheat.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="dllmain.cpp" />

@@ -56,6 +56,8 @@ namespace Menu
 		inline int LineType = { 0 };
 		inline bool AimCricle = { false };
 		inline int CricleType = { 0 };
+		inline bool Bone = { true };
+		inline bool HeadCricle = { true };
 	}
 
 	namespace Misc
@@ -68,6 +70,7 @@ namespace Menu
 		inline ImColor BoxColor = ImColor(252, 150, 237, 255);
 		inline ImColor FilledColor = ImColor(252, 150, 237, 80);
 		inline ImColor BoneColor = ImColor(255, 255, 255, 255);
+		inline ImColor HeadCricleColor = ImColor(255, 255, 255, 255);
 		inline ImColor EyeRayColor = ImColor(255, 0, 0, 255);
 		inline ImColor NameColor = ImColor(252, 150, 237, 255);
 		inline ImColor LineColor = ImColor(255, 255, 255, 220);

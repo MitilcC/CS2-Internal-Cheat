@@ -8,6 +8,7 @@
 #include <bitset>
 #include <thread>
 #include "Console.h"
+#include "math.h"
 
 namespace Aimbot
 {

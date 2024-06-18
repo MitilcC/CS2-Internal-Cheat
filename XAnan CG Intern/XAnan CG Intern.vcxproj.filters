@@ -193,6 +193,12 @@
     <ClInclude Include="Console.h">
       <Filter>cheat\menu</Filter>
     </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="kiero\kiero.cpp">
@@ -267,6 +273,9 @@
     </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>cheat\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>sdk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

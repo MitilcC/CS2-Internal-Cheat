@@ -1,17 +1,41 @@
 #include "ESP.h"
 
-
-void ESP::DrawHealthBar(int boxX, int boxY, int w, int boxH, int health) 
+//thanks weedptr https://github.com/MitilcC/CS2-Internal-Cheat/issues/2
+void ESP::DrawHealth(float MaxHealth, float CurrentHealth, ImVec2 Pos, ImVec2 Size, bool Horizontal)
 {
-	int left = boxX - w - 3;
-	ImGui::GetBackgroundDrawList()->AddRect(ImVec2(left - 1 ,boxY + 3), ImVec2(left - 1 +  w, boxY + boxH - 3),ImColor(0,0,0), 4);
-	ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(left, boxY + 4), ImVec2(left + w, boxY + boxH - 4), ImColor(255,255,255), 4);
-	ImGui::GetBackgroundDrawList()->AddText(ImVec2(left - 23, boxY + 3), Menu::Color::HealthColor, std::to_string(health).c_str());
-	float pos = (100 - health) / 100;
+	ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
 
-	ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(left, boxY + 4 + boxH * pos), ImVec2(left + w, boxY + boxH - 4), ImColor(0,255,64), 4);
+	float Proportion = CurrentHealth / MaxHealth;
+
+	ImColor FirstStageColor = ImColor(96, 246, 113, 220);
+	ImColor SecondStageColor = ImColor(247, 214, 103, 220);
+	ImColor ThirdStageColor = ImColor(255, 95, 95, 220);
+	ImColor BackGroundColor = ImColor(90, 90, 90, 220);
+	ImColor Color;
+	if (Proportion > 0.5)
+		Color = FirstStageColor;
+	else if (Proportion > 0.25)
+		Color = SecondStageColor;
+	else
+		Color = ThirdStageColor;
+
+	DrawList->AddRectFilled(Pos, { Pos.x + Size.x, Pos.y + Size.y }, BackGroundColor);
+
+	if (Horizontal)
+	{
+		DrawList->AddRectFilled(Pos, { Pos.x + Size.x * Proportion, Pos.y + Size.y }, Color);
+	}
+	else
+	{
+		float healthHeight = Size.y * Proportion;
+		DrawList->AddRectFilled({ Pos.x, Pos.y + Size.y - healthHeight }, { Pos.x + Size.x, Pos.y + Size.y }, Color);
+	}
+
+	ImColor BorderColor = ImColor(45, 45, 45, 220);
+	DrawList->AddRect(Pos, { Pos.x + Size.x, Pos.y + Size.y }, BorderColor);
 
 }
+
 
 bool ESP::Start() 
 {
@@ -73,9 +97,9 @@ bool ESP::Start()
 		const float  w  { ImGui::GetIO().DisplaySize.x };
 		const float  h  { ImGui::GetIO().DisplaySize.y };
 
-		Vector3 currBotPos = Get::BonePos(Entity.pawn,Bone::ankle_L) ;
+		Vector3 currBotPos = Get::BonePos(Entity.pawn, BoneIndex::ankle_L) ;
 
-		Vector3 currTopPos = Get::BonePos(Entity.pawn, Bone::head) ;
+		Vector3 currTopPos = Get::BonePos(Entity.pawn, BoneIndex::head) ;
 
 		Vector3 curr2DBot{};
 		Vector3 curr2DTop{};
@@ -110,7 +134,10 @@ bool ESP::Start()
 
 		if (Menu::ESP::Health)
 		{
-			DrawHealthBar(x, y, 5, height, Entity.health);
+			ImVec2 healthBarPos = ImVec2(x - 10, y); // Adjust position as needed
+			ImVec2 healthBarSize = ImVec2(5, height); // Adjust size as needed
+
+			DrawHealth(100.0f, static_cast<float>(Entity.health), healthBarPos, healthBarSize, false);
 		}
 
 		if (Menu::ESP::Name)
@@ -137,6 +164,15 @@ bool ESP::Start()
 		
 		}
 
+		if (Menu::ESP::Bone) 
+		{
+			Bone::Start(Entity.pawn, Menu::Color::BoneColor);
+		}
+
+		if (Menu::ESP::HeadCricle)
+		{
+			Bone::HeadCricle(Entity.pawn, Menu::Color::HeadCricleColor);
+		}
 	    
 	}
 

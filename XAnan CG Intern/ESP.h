@@ -10,9 +10,10 @@
 #include <vector>
 #include <bitset>
 #include "Console.h"
+#include "Bone.h"
 
 namespace ESP
 {
-	void DrawHealthBar(int boxX, int boxY, int w, int boxH, int health);
+	void DrawHealth(float MaxHealth, float CurrentHealth, ImVec2 Pos, ImVec2 Size, bool Horizontal = true);
 	bool Start();
 };

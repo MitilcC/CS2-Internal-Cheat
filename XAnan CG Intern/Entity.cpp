@@ -123,8 +123,6 @@ std::string Get::PlayerName(intptr_t addr)
 	return string_To_UTF8(entNameBuffer);
 }
 
-
-
 Vector3 Get::WindowSize() 
 {
 	Vector3 ret{};

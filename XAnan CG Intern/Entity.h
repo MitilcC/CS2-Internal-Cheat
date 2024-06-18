@@ -21,7 +21,7 @@ public:
 	std::string name;
 };
 
-enum Bone
+enum BoneIndex
 {
 	head = 6,
 	neck_0 = 5,
