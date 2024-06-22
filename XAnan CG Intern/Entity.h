@@ -60,6 +60,7 @@ namespace Get
 namespace Set
 {
 	void RadarHack(intptr_t addr);
+	void Glow(intptr_t addr, ImColor color);
 }
 
 struct BoneJoint

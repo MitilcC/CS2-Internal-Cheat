@@ -193,6 +193,8 @@ void Menu::start()
 
 					ImGui::Checkbox("BoneESP", &Menu::ESP::Bone);
 
+					ImGui::Checkbox("Glow", &Menu::ESP::Glow);
+
 					ImGui::Checkbox("HeadCricle", &Menu::ESP::HeadCricle);
 
 					ImGui::Checkbox("PlayerName", &Menu::ESP::Name);

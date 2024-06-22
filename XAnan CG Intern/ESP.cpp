@@ -173,6 +173,9 @@ bool ESP::Start()
 		{
 			Bone::HeadCricle(Entity.pawn, Menu::Color::HeadCricleColor);
 		}
+
+		if(Menu::ESP::Glow)
+			Set::Glow(Entity.pawn, ImColor(0,0,0));
 	    
 	}
 

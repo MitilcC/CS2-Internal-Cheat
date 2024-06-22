@@ -139,9 +139,21 @@ Vector3 Get::LastCameraPos(intptr_t addr)
 
 void Set::RadarHack(intptr_t addr) 
 {
-	int open = 1;
 	int32_t* SpottedStatus{ reinterpret_cast<int32_t*>(addr + Offset::Pawn::bSpottedByMask) };
-	SpottedStatus = &open;
+	*SpottedStatus = 1;
 }
 
 
+void Set::Glow(intptr_t addr, ImColor color)
+{
+	Vector3 open{};
+	open.x = color.Value.x;
+	open.y = color.Value.y;
+	open.z = color.Value.z;
+	intptr_t* GlowColorOverride = reinterpret_cast<intptr_t*>(addr + Offset::Pawn::glow + Offset::Pawn::glow_ovrride);
+	intptr_t* GlowOpen = reinterpret_cast<intptr_t*>(addr + Offset::Pawn::glow + Offset::Pawn::glowing);
+	//Vector3* GlowColor = reinterpret_cast<Vector3*>(addr + Offset::Pawn::glow + Offset::Pawn::glow_color);
+	//*GlowColor = open;
+	*GlowColorOverride = 0x800000FF;
+	*GlowOpen = 1;
+}

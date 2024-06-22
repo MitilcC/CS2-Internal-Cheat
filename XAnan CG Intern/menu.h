@@ -58,6 +58,7 @@ namespace Menu
 		inline int CricleType = { 0 };
 		inline bool Bone = { true };
 		inline bool HeadCricle = { true };
+		inline bool Glow = { false };
 	}
 
 	namespace Misc

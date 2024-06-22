@@ -28,6 +28,10 @@ namespace Offset
 
 	namespace Pawn
 	{
+		inline constexpr intptr_t glow_ovrride = cs2_dumper::schemas::client_dll::CGlowProperty::m_glowColorOverride;
+		inline constexpr intptr_t glow_color = cs2_dumper::schemas::client_dll::CGlowProperty::m_fGlowColor;
+		inline constexpr intptr_t glow = cs2_dumper::schemas::client_dll::C_BaseModelEntity::m_Glow;
+		inline constexpr intptr_t glowing = cs2_dumper::schemas::client_dll::CGlowProperty::m_bGlowing;
 		inline constexpr intptr_t PawnAlive = cs2_dumper::schemas::client_dll::CCSPlayerController::m_bPawnIsAlive;
 		inline constexpr intptr_t BoneArray{ cs2_dumper::schemas::client_dll::CSkeletonInstance::m_modelState + 0x80 }; // GameSceneNode + BoneArray
 		inline constexpr intptr_t iHealth{ cs2_dumper::schemas::client_dll::C_BaseEntity::m_iHealth };
