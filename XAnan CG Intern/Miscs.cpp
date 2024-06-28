@@ -1,6 +1,5 @@
 #include "Miscs.h"
 
-/*
 Vector2 RevolveCoordinatesSystem(float RevolveAngle, Vector2 OriginPos, Vector2 DestPos)
 {
 	Vector2 ResultPos;
@@ -80,7 +79,7 @@ void Base_Radar::AddPoint(const Vector3& LocalPos, const float& LocalYaw, const 
 		|| PointPos.y > this->Pos.y + RenderRange || PointPos.y < this->Pos.y - RenderRange)
 		return;
 
-	std::tuple<Vector2, ImColor, int, float> Data(PointPos, Color, 1, Yaw);
+	std::tuple<Vector2, ImColor, int, float> Data(PointPos, Color, 0, Yaw);
 	this->Points.push_back(Data);
 }
 
@@ -100,9 +99,43 @@ void DrawTriangle(Vector2 Center, ImColor Color, float Width, float Height, floa
 		ImVec2(c.x, c.y),
 		Color);
 }
+Base_Radar Radar;
 
+void Misc::RadarSetting(Base_Radar& Radar)
+{
+	//ImGui::SetNextWindowBgAlpha(Menu::Misc::RadarBgAlpha);
+	ImGui::Begin(("Radar"), 0, ImGuiWindowFlags_NoResize);
+	ImGui::SetWindowSize({ Menu::Misc::RadarRange * 2,Menu::Misc::RadarRange * 2 });
+	if (!Menu::Misc::customRadar)
+	{
+		ImGui::SetWindowPos(ImVec2(0, 0));
+		Menu::Misc::ShowRadarCrossLine = false;
+		Menu::Misc::Proportion = 3300.f;
+		Menu::Misc::RadarPointSizeProportion = 1.f;
+		Menu::Misc::RadarRange = 150.f;
+		Menu::Misc::RadarBgAlpha = 0.1f;
+		Menu::Misc::RadarCrossLineColor = ImColor(200, 200, 200, 255);
+	}
+
+
+	// Radar.SetPos({ Gui.Window.Size.x / 2,Gui.Window.Size.y / 2 });
+	Radar.SetDrawList(ImGui::GetWindowDrawList());
+	Radar.SetPos({ ImGui::GetWindowPos().x + Menu::Misc::RadarRange, ImGui::GetWindowPos().y + Menu::Misc::RadarRange });
+	Radar.SetProportion(Menu::Misc::Proportion);
+	Radar.SetRange(Menu::Misc::RadarRange);
+	Radar.SetSize(Menu::Misc::RadarRange * 2);
+	Radar.SetCrossColor(Menu::Misc::RadarCrossLineColor);
+
+	Radar.ArcArrowSize *= Menu::Misc::RadarPointSizeProportion;
+	Radar.ArrowSize *= Menu::Misc::RadarPointSizeProportion;
+	Radar.CircleSize *= Menu::Misc::RadarPointSizeProportion;
+
+	Radar.ShowCrossLine = Menu::Misc::ShowRadarCrossLine;
+	Radar.Opened = true;
+}
 void Base_Radar::Render()
 {
+
 
 	if (Width <= 0)
 		return;
@@ -197,10 +230,15 @@ void Base_Radar::Render()
 
 	if (this->Points.size() > 0)
 		this->Points.clear();
+	ImGui::End();
 }
-Base_Radar Radar;*/
-bool Misc::GetRadarTarget()
+
+bool Misc::Start()
 {
+	// Radar Data
+	Base_Radar Radar;
+	Misc::RadarSetting(Radar);
+
 	Player LocalPlayer{};
 
 	LocalPlayer.control = Address::GetLocalPlayerControl();
@@ -256,25 +294,15 @@ bool Misc::GetRadarTarget()
 			Set::RadarHack(Entity.pawn);
 			continue;
 		}
-		/*
+
 		Vector3 LocalPos = Get::PlayerPos(LocalPlayer.pawn);
 		Vector3 TargetPos = Get::PlayerPos(Entity.pawn);
 		Radar.AddPoint(LocalPos, LocalPlayer::GetViewAngles().y, TargetPos, ImColor(237, 85, 106, 200), Get::ViewAngles(Entity.pawn).y);
 
 		Vector3 Window = Get::WindowSize();
 
-		Radar.Render();
-		ImGui::End();*/
+
 	}
-
-	return true;
-}
-bool Misc::Start()
-{
-
-	if (Menu::Misc::Radar)
-		Misc::GetRadarTarget();
-
-
+	Radar.Render();
 	return true;
 }

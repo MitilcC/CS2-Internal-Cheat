@@ -246,11 +246,21 @@ void Menu::start()
 				{
 					ImGui::SetWindowFontScale(dpi_scale);
 
-					//ImGui::Checkbox("RadarHack", &Menu::Misc::Radar);
-					//if (Menu::Misc::Radar)
-					//{to be finish
+					ImGui::Checkbox("RadarHack", &Menu::Misc::Radar);
+					if (Menu::Misc::Radar) {
 						ImGui::Checkbox("Ingame Radar", &Menu::Misc::IngameRadar);
-					//}
+						if (!Menu::Misc::IngameRadar)
+							ImGui::Checkbox("Custom Radar", &Menu::Misc::customRadar);
+					}
+					if (Menu::Misc::customRadar && !Menu::Misc::IngameRadar)
+					{
+						ImGui::Checkbox("Crossline", &Menu::Misc::ShowRadarCrossLine);
+						//PutSliderFloat(Lang::RadarText.SizeSlider, 5.f, &RadarCFG::RadarPointSizeProportion, &RadarPointSizeProportionMin, &RadarPointSizeProportionMax, "%1.f");
+						//PutSliderFloat(Lang::RadarText.ProportionSlider, 5.f, &RadarCFG::Proportion, &ProportionMin, &ProportionMax, "%.1f");
+						//PutSliderFloat(Lang::RadarText.RangeSlider, 5.f, &RadarCFG::RadarRange, &RadarRangeMin, &RadarRangeMax, "%.1f");
+						//PutSliderFloat(Lang::RadarText.AlphaSlider, 5.f, &RadarCFG::RadarBgAlpha, &AlphaMin, &AlphaMax, "%.1f");
+						
+					}
 
 				}
 				ImGui::EndChild();

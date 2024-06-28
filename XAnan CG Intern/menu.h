@@ -65,7 +65,14 @@ namespace Menu
 	namespace Misc
 	{
 		inline bool Radar = { false };
+		inline bool customRadar = { false };
+		inline bool ShowRadarCrossLine = { false };
+		inline float Proportion = { 3300.f };
+		inline float RadarPointSizeProportion = { 1.f };
+		inline float RadarRange = { 150.f };
+		inline float RadarBgAlpha = { 0.1f };
 		inline bool IngameRadar = { false };
+		inline ImColor RadarCrossLineColor = ImColor(200, 200, 200, 255);
 		
 	}
 

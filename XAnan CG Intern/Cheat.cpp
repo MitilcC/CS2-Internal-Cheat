@@ -2,11 +2,11 @@
 #include "Console.h"
 #include "Miscs.h"
 
-bool Cheat::Run() 
+bool Cheat::Run()
 {
 	if (Menu::ShowMenu)
 		Menu::start();
-	
+
 	static std::chrono::time_point LastTimePoint = std::chrono::steady_clock::now();
 	auto CurTimePoint = std::chrono::steady_clock::now();
 

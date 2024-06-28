@@ -16,12 +16,6 @@
 #include "Bone.h"
 #include "math.h"
 #include <tuple>
-namespace Misc
-{
-	bool GetRadarTarget();
-	bool Start();
-};
-
 class Base_Radar
 {
 public:
@@ -65,3 +59,10 @@ private:
 	float Width = 200;
 	std::vector<std::tuple<Vector2, ImColor, int, float>> Points;
 };
+
+namespace Misc
+{
+	void RadarSetting(Base_Radar& Radar);
+	bool Start();
+};
+
