@@ -1,6 +1,6 @@
 #include "Miscs.h"
 
-
+/*
 Vector2 RevolveCoordinatesSystem(float RevolveAngle, Vector2 OriginPos, Vector2 DestPos)
 {
 	Vector2 ResultPos;
@@ -198,7 +198,7 @@ void Base_Radar::Render()
 	if (this->Points.size() > 0)
 		this->Points.clear();
 }
-Base_Radar Radar;
+Base_Radar Radar;*/
 bool Misc::GetRadarTarget()
 {
 	Player LocalPlayer{};
@@ -213,9 +213,6 @@ bool Misc::GetRadarTarget()
 	{
 		return false;
 	}
-
-	int Distance = 0;
-	int LastDistance = 999999999;
 
 	for (int i{ 0 }; i < 64; ++i)
 	{
@@ -259,7 +256,7 @@ bool Misc::GetRadarTarget()
 			Set::RadarHack(Entity.pawn);
 			continue;
 		}
-
+		/*
 		Vector3 LocalPos = Get::PlayerPos(LocalPlayer.pawn);
 		Vector3 TargetPos = Get::PlayerPos(Entity.pawn);
 		Radar.AddPoint(LocalPos, LocalPlayer::GetViewAngles().y, TargetPos, ImColor(237, 85, 106, 200), Get::ViewAngles(Entity.pawn).y);
@@ -267,20 +264,13 @@ bool Misc::GetRadarTarget()
 		Vector3 Window = Get::WindowSize();
 
 		Radar.Render();
-		ImGui::End();
+		ImGui::End();*/
 	}
 
 	return true;
 }
 bool Misc::Start()
 {
-	Player LocalPlayer{};
-
-	LocalPlayer.control = Address::GetLocalPlayerControl();
-
-	LocalPlayer.pawn = Get::PlayerPawnAddress(LocalPlayer.control);
-
-	LocalPlayer.team = Get::PlayerTeam(LocalPlayer.pawn);
 
 	if (Menu::Misc::Radar)
 		Misc::GetRadarTarget();
