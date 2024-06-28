@@ -198,6 +198,7 @@
     <ClInclude Include="LocalPlayer.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Miscs.h" />
     <ClInclude Include="offsets.h" />
     <ClInclude Include="Address.h" />
     <ClInclude Include="Peb.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="LocalPlayer.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Miscs.cpp" />
     <ClCompile Include="Search.cpp" />
     <ClCompile Include="Ults.cpp" />
     <ClCompile Include="Vector.cpp" />

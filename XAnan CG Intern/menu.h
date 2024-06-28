@@ -39,6 +39,7 @@ namespace Menu
 
 	inline bool bESP = { true };
 	inline bool bAimBot = { true };
+	inline bool bMisc = { true };
 	inline bool TeamCheck = { true };
 	inline int FovValue = { 90 };
 	inline bool AimLock = { false };
@@ -63,7 +64,9 @@ namespace Menu
 
 	namespace Misc
 	{
-		inline bool Rander = { false };
+		inline bool Radar = { false };
+		inline bool IngameRadar = { false };
+		
 	}
 
 	namespace Color

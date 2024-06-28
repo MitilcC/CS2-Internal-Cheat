@@ -246,7 +246,11 @@ void Menu::start()
 				{
 					ImGui::SetWindowFontScale(dpi_scale);
 
-					ImGui::Checkbox("RanderHack", &Menu::Misc::Rander);
+					//ImGui::Checkbox("RadarHack", &Menu::Misc::Radar);
+					//if (Menu::Misc::Radar)
+					//{to be finish
+						ImGui::Checkbox("Ingame Radar", &Menu::Misc::IngameRadar);
+					//}
 
 				}
 				ImGui::EndChild();

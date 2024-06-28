@@ -111,7 +111,52 @@ DWORD WINAPI MainThread(LPVOID lpReserved)
 
 	return TRUE;
 }
+template <typename C> 
+constexpr int StringCompare(const C* tszLeft, const C* tszRight)
+{
+	if (tszLeft == nullptr)
+		return -1;
 
+	if (tszRight == nullptr)
+		return 1;
+
+	using ComparisonType_t = std::conditional_t<std::is_same_v<C, char>, std::uint8_t, std::conditional_t<sizeof(wchar_t) == 2U, std::int16_t, std::int32_t>>;
+
+	ComparisonType_t nLeft, nRight;
+	do
+	{
+		nLeft = static_cast<ComparisonType_t>(*tszLeft++);
+		nRight = static_cast<ComparisonType_t>(*tszRight++);
+
+		if (nLeft == C('\0'))
+			break;
+	} while (nLeft == nRight);
+
+	return nLeft - nRight;
+}
+#pragma region memory_get
+
+void* GetModuleBaseHandle(const wchar_t* wszModuleName)
+{
+	const _PEB* pPEB = reinterpret_cast<_PEB*>(__readgsqword(0x60));
+
+	if (wszModuleName == nullptr)
+		return pPEB->ImageBaseAddress;
+
+	void* pModuleBase = nullptr;
+	for (LIST_ENTRY* pListEntry = pPEB->Ldr->InMemoryOrderModuleList.Flink; pListEntry != &pPEB->Ldr->InMemoryOrderModuleList; pListEntry = pListEntry->Flink)
+	{
+		const _LDR_DATA_TABLE_ENTRY* pEntry = CONTAINING_RECORD(pListEntry, _LDR_DATA_TABLE_ENTRY, InMemoryOrderLinks);
+
+		if (pEntry->FullDllName.Buffer != nullptr && StringCompare(wszModuleName, pEntry->BaseDllName.Buffer) == 0)
+		{
+			pModuleBase = pEntry->DllBase;
+			break;
+		}
+	}
+
+	return pModuleBase;
+}
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  dwReason,
                        LPVOID lpReserved
@@ -121,6 +166,15 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 		DisableThreadLibraryCalls(hModule);
+/*
+ * check did all game modules have been loaded
+ * @note: navsystem.dll is the last loaded module
+ * port from asphyxia
+ */
+		while (GetModuleBaseHandle(L"navsystem.dll") == nullptr)
+			Sleep(150);//chk per 150ms
+			
+
 		CreateThread(nullptr, 0, MainThread, hModule, 0, nullptr);
 		break;
 	case DLL_PROCESS_DETACH:

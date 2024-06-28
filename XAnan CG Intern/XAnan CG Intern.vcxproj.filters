@@ -199,6 +199,9 @@
     <ClInclude Include="Math.h">
       <Filter>sdk</Filter>
     </ClInclude>
+    <ClInclude Include="Miscs.h">
+      <Filter>cheat\feature</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="kiero\kiero.cpp">
@@ -276,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="Bone.cpp">
       <Filter>sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="Miscs.cpp">
+      <Filter>cheat\feature</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

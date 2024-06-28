@@ -1,5 +1,6 @@
 #include "Cheat.h"
 #include "Console.h"
+#include "Miscs.h"
 
 bool Cheat::Run() 
 {
@@ -22,6 +23,8 @@ bool Cheat::Run()
 		if (Menu::bAimBot) Aimbot::Start();
 
 		if (Menu::bESP) ESP::Start();
+
+		if (Menu::bMisc) Misc::Start();
 	}
 
 

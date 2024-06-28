@@ -51,6 +51,7 @@ namespace Get
 	int32_t PlayerHealth(intptr_t addr);
 	Vector3 PlayerPos(intptr_t addr);
 	Vector3 BonePos(intptr_t addr, int32_t index);
+	Vector2 ViewAngles(intptr_t addr);
 	bool IsDormant(intptr_t addr);
 	std::string PlayerName(intptr_t addr);
 	Vector3 WindowSize();

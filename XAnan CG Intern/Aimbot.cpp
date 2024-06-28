@@ -145,6 +145,7 @@ bool Aimbot::ShotTarget()
 	LocalPlayer::SetViewAngles(targetAngle);
 	//mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 	ShotFired = true;
+	return true;
 }
 
 bool Aimbot::Start()
@@ -157,12 +158,16 @@ bool Aimbot::Start()
 		{
 			ShotTarget();
 		}
-		else
+		else {
 			Target::addr = {};
+			return false;
+		}
+
 	}
 	else
 	{
 		Target::addr = 0;
+		return false;
 	}
 
 	if (ShotFired)
@@ -170,6 +175,6 @@ bool Aimbot::Start()
 		//LocalPlayer::SetViewAngles(LastAngles);
 		ShotFired = false;
 	}
-
+	return true;
 }
 
