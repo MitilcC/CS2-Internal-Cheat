@@ -171,8 +171,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
  * @note: navsystem.dll is the last loaded module
  * port from asphyxia
  */
-		while (GetModuleBaseHandle(L"navsystem.dll") == nullptr)
-			Sleep(150);//chk per 150ms
+		//while (GetModuleBaseHandle(L"navsystem.dll") == nullptr)
+			//Sleep(150);//chk per 150ms
 			
 
 		CreateThread(nullptr, 0, MainThread, hModule, 0, nullptr);

@@ -79,7 +79,7 @@ void Base_Radar::AddPoint(const Vector3& LocalPos, const float& LocalYaw, const 
 		|| PointPos.y > this->Pos.y + RenderRange || PointPos.y < this->Pos.y - RenderRange)
 		return;
 
-	std::tuple<Vector2, ImColor, int, float> Data(PointPos, Color, 0, Yaw);
+	std::tuple<Vector2, ImColor, int, float> Data(PointPos, Color, 2, Yaw);
 	this->Points.push_back(Data);
 }
 
@@ -103,7 +103,7 @@ Base_Radar Radar;
 
 void Misc::RadarSetting(Base_Radar& Radar)
 {
-	//ImGui::SetNextWindowBgAlpha(Menu::Misc::RadarBgAlpha);
+	ImGui::SetNextWindowBgAlpha(Menu::Misc::RadarBgAlpha);
 	ImGui::Begin(("Radar"), 0, ImGuiWindowFlags_NoResize);
 	ImGui::SetWindowSize({ Menu::Misc::RadarRange * 2,Menu::Misc::RadarRange * 2 });
 	if (!Menu::Misc::customRadar)
@@ -247,10 +247,10 @@ bool Misc::Start()
 
 	LocalPlayer.team = Get::PlayerTeam(LocalPlayer.pawn);
 
-	if (!Get::PlayerAlive(LocalPlayer.pawn))
-	{
-		return false;
-	}
+	//if (!Get::PlayerAlive(LocalPlayer.pawn))
+	//{
+		//return false;
+	//}
 
 	for (int i{ 0 }; i < 64; ++i)
 	{
