@@ -165,13 +165,13 @@ void Base_Radar::Render()
 			float	PointYaw = std::get<3>(PointSingle);
 			if (PointType == 0)
 			{
-				// Ô²ÐÎÑùÊ½
+				// åŸ´å€›æ¬´å®’
 				this->DrawList->AddCircle(PointPos.ToImVec2(), this->CircleSize, PointColor);
 				this->DrawList->AddCircleFilled(PointPos.ToImVec2(), this->CircleSize, ImColor(0, 0, 0));
 			}
 			else if (PointType == 1)
 			{
-				// ¼ýÍ·ÑùÊ½
+				// ç’‹èŠ›æ¬´å®’
 				Vector2 a, b, c;
 				Vector2 Re_a, Re_b, Re_c;
 				Vector2 Re_Point;
@@ -204,7 +204,7 @@ void Base_Radar::Render()
 			}
 			else
 			{
-				// Ô²»¡¼ýÍ·
+				// åŸ´èªªç’‹èŠ›
 				ImVec2 TrianglePoint, TrianglePoint_1, TrianglePoint_2;
 				float Angle = (this->LocalYaw - PointYaw) - 90;
 
@@ -295,10 +295,11 @@ bool Misc::Start()
 			continue;
 		}
 
-		Vector3 LocalPos = Get::PlayerPos(LocalPlayer.pawn);
-		Vector3 TargetPos = Get::PlayerPos(Entity.pawn);
-		Radar.AddPoint(LocalPos, LocalPlayer::GetViewAngles().y, TargetPos, ImColor(237, 85, 106, 200), Get::ViewAngles(Entity.pawn).y);
-
+		if (Menu::Misc::Radar) {
+			Vector3 LocalPos = Get::PlayerPos(LocalPlayer.pawn);
+			Vector3 TargetPos = Get::PlayerPos(Entity.pawn);
+			Radar.AddPoint(LocalPos, LocalPlayer::GetViewAngles().y, TargetPos, ImColor(237, 85, 106, 200), Get::ViewAngles(Entity.pawn).y);
+		}
 		Vector3 Window = Get::WindowSize();
 
 
