@@ -245,8 +245,26 @@ void Menu::start()
 				ImGui::BeginChildPos("Misc", ImVec2(620 * dpi_scale, 580 * dpi_scale));
 				{
 					ImGui::SetWindowFontScale(dpi_scale);
+					float RadarPointSizeProportionMin = 0.8f, RadarPointSizeProportionMax = 2.f;
+					float ProportionMin = 500.f, ProportionMax = 3300.f;
+					float RadarRangeMin = 100.f, RadarRangeMax = 300.f;
+					float AlphaMin = 0.f, AlphaMax = 1.f;
+					ImGui::Checkbox("RadarHack", &Menu::Misc::Radar);
+					if (Menu::Misc::Radar) {
+						ImGui::Checkbox("Ingame Radar", &Menu::Misc::IngameRadar);
+						if (!Menu::Misc::IngameRadar)
+							ImGui::Checkbox("Custom Radar", &Menu::Misc::customRadar);
+					}
+					if (Menu::Misc::customRadar && !Menu::Misc::IngameRadar)
+					{
+						ImGui::Checkbox("Crossline", &Menu::Misc::ShowRadarCrossLine);
+						ImGui::SliderFloat("Point Size", &Menu::Misc::RadarPointSizeProportion, RadarPointSizeProportionMin, RadarPointSizeProportionMax, "%.1f");
+						ImGui::SliderFloat("Proportion", &Menu::Misc::Proportion, ProportionMin, ProportionMax, "%1.f");
+						ImGui::SliderFloat("Alpha", &Menu::Misc::RadarBgAlpha, AlphaMin, AlphaMax, "%.1f");
+						ImGui::SliderFloat("Range", &Menu::Misc::RadarRange, RadarRangeMin, RadarRangeMax, "%1.f");
 
-					ImGui::Checkbox("RanderHack", &Menu::Misc::Rander);
+						
+					}
 
 				}
 				ImGui::EndChild();
