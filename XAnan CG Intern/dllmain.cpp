@@ -45,7 +45,20 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 	return CallWindowProc(oWndProc, hWnd, uMsg, wParam, lParam);
 }
+BOOL CALLBACK find_game_hwnd(HWND hwnd, LPARAM game_pid) {
+	// Skip windows not belonging to the game process.
+	DWORD hwnd_pid = NULL;
 
+	GetWindowThreadProcessId(hwnd, &hwnd_pid);
+
+	if (hwnd_pid != game_pid)
+		return TRUE;
+
+	// Set the target window handle and stop the callback.
+	game_hwnd = hwnd;
+
+	return FALSE;
+}
 HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 {
 	if (!init)
@@ -53,9 +66,8 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice)))
 		{
 			pDevice->GetImmediateContext(&pContext);
-			DXGI_SWAP_CHAIN_DESC sd;
-			pSwapChain->GetDesc(&sd);
-			window = sd.OutputWindow;
+			EnumWindows(find_game_hwnd, GetCurrentProcessId());
+			window = game_hwnd;
 			ID3D11Texture2D* pBackBuffer;
 			pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 			pDevice->CreateRenderTargetView(pBackBuffer, NULL, &mainRenderTargetView);
