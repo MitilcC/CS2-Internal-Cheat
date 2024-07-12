@@ -4,9 +4,9 @@
 APEX cv了一个月的源码让人远控格盘了 有意思不 还cv不？ cv技术哥! 人家找你逆向游戏找数据 你鸽人家一天就改名跑路互联网谁不认识是咋的？
 你不是想出名吗？你爹让你出出名 hhh
 
-![image]([https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/个人跑路声明.jpg]
+![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/个人跑路声明.jpg)
 
-![image]([https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/圈钱记录.png]
+![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/圈钱记录.png)
 
 Free and open-source internal cheat for CS2, written in C++, working on Windows
 免费并且开源的CS2内部辅助，它被用于Windows系统
