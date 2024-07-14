@@ -102,6 +102,10 @@ Vector3 Get::BonePos(intptr_t addr, int32_t index)
 	}
 	return *reinterpret_cast<Vector3*>(address  + d);
 }
+Vector3 Get::ViewAngles(intptr_t addr)
+{
+	return *reinterpret_cast<Vector3*>(addr + Offset::Pawn::vAngEyeAngles);
+}
 
 bool Get::IsDormant(intptr_t addr)
 {
