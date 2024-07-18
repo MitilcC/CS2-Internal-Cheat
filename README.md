@@ -29,6 +29,14 @@ The project is now being perfected
 My QQ Group (China) : 942217525
 更新QQ群：942217525
 
+Update Log :
+更新内容：
+
+1. Fix crash game // 修复游戏闪退
+2. Fix Rander Hacker // 修复雷达功能
+3. Add Glow Hacker // 添加发光功能
+4. Fix Bone // 修复骨骼存在的问题
+
 ## Functions
 
 > 1. BoneESP
