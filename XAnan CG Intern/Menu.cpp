@@ -185,15 +185,13 @@ void Menu::start()
 				{
 					ImGui::SetWindowFontScale(dpi_scale);
 
-					ImGui::Checkbox("BoxESP", &Menu::ESP::Box);
+					ImGui::Checkbox("Box", &Menu::ESP::Box);
 
 					ImGui::Combo("BoxType", &Menu::ESP::BoxType, "Rect\0Filled");
 
 					ImGui::Checkbox("HealthBar", &Menu::ESP::Health);
 
-					ImGui::Checkbox("BoneESP", &Menu::ESP::Bone);
-
-					ImGui::Checkbox("Glow", &Menu::ESP::Glow);
+					ImGui::Checkbox("Bone", &Menu::ESP::Bone);
 
 					ImGui::Checkbox("HeadCricle", &Menu::ESP::HeadCricle);
 
@@ -207,7 +205,7 @@ void Menu::start()
 
 					ImGui::Combo("CricleType", &Menu::ESP::CricleType, "Emerey\0Screen");
 
-
+					ImGui::Checkbox("Glow", &Menu::ESP::Glow);
 
 				}
 				ImGui::EndChild();

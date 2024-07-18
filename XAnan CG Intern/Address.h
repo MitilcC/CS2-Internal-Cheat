@@ -3,6 +3,7 @@
 #include <vector>
 #include "offsets.h"
 #include "Vector.h"
+#include "Windows.h"
 
 namespace Address
 {
@@ -27,6 +28,9 @@ namespace Address
 		for (const auto& currOffset : pListOffset)
 		{
 			if (!currOffset) return T();
+
+			if (IsBadReadPtr((void*)(addrBuffer + currOffset), sizeof(T)))
+				return NULL;
 
 			addrBuffer = *reinterpret_cast<intptr_t*>(addrBuffer + currOffset);
 			addrResult = static_cast<T>(addrBuffer);

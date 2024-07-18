@@ -44,7 +44,13 @@ bool ESP::Start()
 
 	LocalPlayer.control = Address::GetLocalPlayerControl();
 
+	if (!LocalPlayer.control) 
+		return false;
+
 	LocalPlayer.pawn = Get::PlayerPawnAddress(LocalPlayer.control);
+
+	if (!LocalPlayer.pawn) 
+		return false;
 
 	LocalPlayer.team = Get::PlayerTeam(LocalPlayer.pawn);
 
@@ -58,13 +64,19 @@ bool ESP::Start()
 
 		Entity.control = Address::GetEntityBase(i);
 
+		if (!Entity.control) 
+			continue;
+
 		if(!Get::PawnAlive(Entity.control))
 		{
 			continue;
 		}
 
 		Entity.pawn = Get::PlayerPawnAddress(Entity.control);
-		
+
+		if (!Entity.pawn)
+			continue;
+	
 		Entity.team = Get::PlayerTeam(Entity.pawn);
 
 		Entity.health = Get::PlayerHealth(Entity.pawn);
@@ -89,7 +101,6 @@ bool ESP::Start()
 			continue;
 		}
 
-
 		Entity.name = Get::PlayerName(Entity.control);
 
 		Entity.pos = Get::PlayerPos(Entity.pawn);
@@ -101,11 +112,15 @@ bool ESP::Start()
 
 		Vector3 currTopPos = Get::BonePos(Entity.pawn, BoneIndex::head) ;
 
+
 		Vector3 curr2DBot{};
 		Vector3 curr2DTop{};
 
+
 		if (!Utils::WorldToScreen(currBotPos, curr2DBot, Address::GetViewMatrixPtr(), w, h))
 			continue;
+		
+		
 		if (!Utils::WorldToScreen(currTopPos, curr2DTop, Address::GetViewMatrixPtr(), w, h))
 			continue;
 
@@ -114,8 +129,13 @@ bool ESP::Start()
 		const float x = curr2DTop.x - (width / 2.f);
 		const float y = curr2DTop.y - (width / 2.5f);
 
-		Set::RadarHack(Entity.pawn);
 
+		if(Menu::Misc::Rander)
+			Set::RadarHack(Entity.pawn);
+		
+		if(Menu::ESP::Glow)
+			Set::GlowHack(Entity.pawn);
+		
 		if (Menu::ESP::Box) 
 		{
 			if(Menu::ESP::BoxType == 0)
@@ -131,6 +151,7 @@ bool ESP::Start()
 			else
 				ImGui::GetBackgroundDrawList()->AddLine(ImVec2(w / 2, 0), ImVec2(x + height / 2, y), Menu::Color::LineColor);
 		}
+
 
 		if (Menu::ESP::Health)
 		{
@@ -169,13 +190,12 @@ bool ESP::Start()
 			Bone::Start(Entity.pawn, Menu::Color::BoneColor);
 		}
 
+
+
 		if (Menu::ESP::HeadCricle)
 		{
 			Bone::HeadCricle(Entity.pawn, Menu::Color::HeadCricleColor);
 		}
-
-		if(Menu::ESP::Glow)
-			Set::Glow(Entity.pawn, ImColor(0,0,0));
 	    
 	}
 

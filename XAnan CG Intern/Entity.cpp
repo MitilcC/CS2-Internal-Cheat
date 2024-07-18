@@ -34,17 +34,17 @@ Vector3 Get::PlayerPos(intptr_t addr)
 	return *reinterpret_cast<Vector3*>(addr + Offset::Pawn::bPos);
 }
 
-int32_t Get::PlayerHealth(intptr_t addr)
+int Get::PlayerHealth(intptr_t addr)
 {
-	int32_t health = Address::ReadInternalMem<int32_t>(addr, { Offset::Pawn::iHealth });
+	int health = Address::ReadInternalMem<int>(addr, { Offset::Pawn::iHealth });
 	return health;
 
 }
 
-int32_t Get::PlayerTeam(intptr_t addr)
+int Get::PlayerTeam(intptr_t addr)
 {
 
-	int32_t team = Address::ReadInternalMem<int32_t>(addr, { Offset::Pawn::iTeamNum }) ;
+	int team = Address::ReadInternalMem<int>(addr, { Offset::Pawn::iTeamNum }) ;
 
 	return team;
 
@@ -139,21 +139,19 @@ Vector3 Get::LastCameraPos(intptr_t addr)
 
 void Set::RadarHack(intptr_t addr) 
 {
-	int32_t* SpottedStatus{ reinterpret_cast<int32_t*>(addr + Offset::Pawn::bSpottedByMask) };
+	bool* SpottedStatus = reinterpret_cast<bool*>(addr + Offset::Pawn::bSpottedByMask);
 	*SpottedStatus = 1;
 }
 
 
-void Set::Glow(intptr_t addr, ImColor color)
+void Set::GlowHack(intptr_t addr)
 {
-	Vector3 open{};
-	open.x = color.Value.x;
-	open.y = color.Value.y;
-	open.z = color.Value.z;
-	intptr_t* GlowColorOverride = reinterpret_cast<intptr_t*>(addr + Offset::Pawn::glow + Offset::Pawn::glow_ovrride);
-	intptr_t* GlowOpen = reinterpret_cast<intptr_t*>(addr + Offset::Pawn::glow + Offset::Pawn::glowing);
-	//Vector3* GlowColor = reinterpret_cast<Vector3*>(addr + Offset::Pawn::glow + Offset::Pawn::glow_color);
-	//*GlowColor = open;
-	*GlowColorOverride = 0x800000FF;
-	*GlowOpen = 1;
+	intptr_t GlowColorOverride = addr + Offset::Pawn::m_Glow + Offset::Pawn::m_GlowOverride;
+	intptr_t GlowFunction = addr + Offset::Pawn::m_Glow + Offset::Pawn::m_bGlowing;
+
+	int* GlowColor = reinterpret_cast<int*>(GlowColorOverride);
+	bool* glow = reinterpret_cast<bool*>(GlowFunction);
+	*GlowColor = 0x800000FF;
+	*glow = 1;
+
 }

@@ -58,12 +58,13 @@ namespace Menu
 		inline int CricleType = { 0 };
 		inline bool Bone = { true };
 		inline bool HeadCricle = { true };
-		inline bool Glow = { false };
+		inline bool Glow = { true };
 	}
 
 	namespace Misc
 	{
-		inline bool Rander = { false };
+		inline bool Rander = { true };
+
 	}
 
 	namespace Color

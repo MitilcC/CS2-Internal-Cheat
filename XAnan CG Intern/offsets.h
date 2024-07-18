@@ -28,10 +28,6 @@ namespace Offset
 
 	namespace Pawn
 	{
-		inline constexpr intptr_t glow_ovrride = cs2_dumper::schemas::client_dll::CGlowProperty::m_glowColorOverride;
-		inline constexpr intptr_t glow_color = cs2_dumper::schemas::client_dll::CGlowProperty::m_fGlowColor;
-		inline constexpr intptr_t glow = cs2_dumper::schemas::client_dll::C_BaseModelEntity::m_Glow;
-		inline constexpr intptr_t glowing = cs2_dumper::schemas::client_dll::CGlowProperty::m_bGlowing;
 		inline constexpr intptr_t PawnAlive = cs2_dumper::schemas::client_dll::CCSPlayerController::m_bPawnIsAlive;
 		inline constexpr intptr_t BoneArray{ cs2_dumper::schemas::client_dll::CSkeletonInstance::m_modelState + 0x80 }; // GameSceneNode + BoneArray
 		inline constexpr intptr_t iHealth{ cs2_dumper::schemas::client_dll::C_BaseEntity::m_iHealth };
@@ -46,6 +42,11 @@ namespace Offset
 		inline constexpr intptr_t CurrentArmor{ cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_ArmorValue };
 		inline constexpr intptr_t pClippingWeapon{ cs2_dumper::schemas::client_dll::C_CSPlayerPawnBase::m_pClippingWeapon };
 		inline constexpr intptr_t bSpottedByMask = cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState + cs2_dumper::schemas::client_dll::EntitySpottedState_t::m_bSpottedByMask;	// C_CSPlayerPawn::entitySpottedState + EntitySpottedState_t::bSpottedByMask
+		inline constexpr intptr_t m_Glow = cs2_dumper::schemas::client_dll::C_BaseModelEntity::m_Glow;
+		inline constexpr intptr_t m_GlowOverride = cs2_dumper::schemas::client_dll::CGlowProperty::m_glowColorOverride;
+		inline constexpr intptr_t m_bGlowing = cs2_dumper::schemas::client_dll::CGlowProperty::m_bGlowing;
+		inline constexpr intptr_t m_fGlowColor = cs2_dumper::schemas::client_dll::CGlowProperty::m_fGlowColor;
+
 	};
 
 	namespace WeaponBaseData

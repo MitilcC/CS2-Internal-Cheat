@@ -31,9 +31,9 @@ void Bone::DrawLine(std::vector<Vector3> list , ImColor Color)
 
 	}
 
-	for (int i = 0; i < Drawlist.size() - 1; ++i)
+	for (int i = 1; i < Drawlist.size(); ++i)
 	{
-		ImGui::GetBackgroundDrawList()->AddLine(ImVec2(Drawlist[i].x, Drawlist[i].y), ImVec2(Drawlist[i + 1].x, Drawlist[i + 1].y), Color);
+		ImGui::GetBackgroundDrawList()->AddLine(ImVec2(Drawlist[i].x, Drawlist[i].y), ImVec2(Drawlist[i -1].x, Drawlist[i - 1].y), Color);
 	}
 }
 
@@ -56,7 +56,7 @@ void Bone::Start(intptr_t pawn, ImColor BoneColor)
 	Bone::BoneDrawList.clear();
 	Bone::BoneDrawList.push_back(Get::BonePos(pawn, BoneIndex::neck_0));
 	Bone::BoneDrawList.push_back(Get::BonePos(pawn, BoneIndex::arm_upper_R));
-	Bone::BoneDrawList.push_back(Get::BonePos(pawn, BoneIndex::arm_lower_R));
+	Bone::BoneDrawList.push_back(Get::BonePos(pawn, BoneIndex::arm_upper_R));
 	Bone::BoneDrawList.push_back(Get::BonePos(pawn, BoneIndex::hand_R));
 	DrawLine(Bone::BoneDrawList, BoneColor);
 

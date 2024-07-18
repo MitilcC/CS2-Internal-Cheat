@@ -10,7 +10,13 @@ bool Aimbot::GetBestTarget()
 
 	LocalPlayer.control = Address::GetLocalPlayerControl();
 
+	if (!LocalPlayer.control)
+		return false;
+
 	LocalPlayer.pawn = Get::PlayerPawnAddress(LocalPlayer.control);
+
+	if (!LocalPlayer.pawn)
+		return false;
 
 	LocalPlayer.team = Get::PlayerTeam(LocalPlayer.pawn);
 
@@ -29,12 +35,18 @@ bool Aimbot::GetBestTarget()
 
 		Entity.control = Address::GetEntityBase(i);
 
+		if (!Entity.control)
+			continue;
+
 		if (!Get::PawnAlive(Entity.control))
 		{
 			continue;
 		}
 
 		Entity.pawn = Get::PlayerPawnAddress(Entity.control);
+
+		if (!Entity.pawn)
+			continue;
 
 		Entity.team = Get::PlayerTeam(Entity.pawn);
 

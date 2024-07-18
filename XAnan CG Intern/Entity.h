@@ -15,8 +15,8 @@ class Player
 public:
 	intptr_t control;
 	intptr_t pawn;
-	int32_t health;
-	int32_t team;
+	int health;
+	int team;
 	Vector3 pos;
 	std::string name;
 };
@@ -47,8 +47,8 @@ namespace Get
 	intptr_t PlayerPawnAddress(intptr_t addr);
 	bool PawnAlive(intptr_t addr);
 	bool PlayerAlive(intptr_t addr);
-	int32_t PlayerTeam(intptr_t addr);
-	int32_t PlayerHealth(intptr_t addr);
+	int PlayerTeam(intptr_t addr);
+	int PlayerHealth(intptr_t addr);
 	Vector3 PlayerPos(intptr_t addr);
 	Vector3 BonePos(intptr_t addr, int32_t index);
 	bool IsDormant(intptr_t addr);
@@ -60,7 +60,7 @@ namespace Get
 namespace Set
 {
 	void RadarHack(intptr_t addr);
-	void Glow(intptr_t addr, ImColor color);
+	void GlowHack(intptr_t addr);
 }
 
 struct BoneJoint
