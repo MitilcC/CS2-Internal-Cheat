@@ -1,14 +1,4 @@
 # CS2-Internal-Cheat
-抱歉占用大家一些时间，接下来我要介绍一位国内顶级cv 私募崽
-在此之前对不起兄弟 我要让你火一火了！ 此人我们就称为CV技术哥 纯废狗 舔完就咬 吃相难看 QQ:1824814791
-你爹好心帮你改源码半夜十二点收你10块钱 舔完转头就成我给你自瞄改废了 圈你十块钱 hhh你木琴真是早s了！
-APEX cv了一个月的源码让人远控格盘了 有意思不 还cv不？ cv技术哥! 人家找你逆向游戏找数据 你鸽人家一天就改名跑路互联网谁不认识是咋的？
-你不是想出名吗？你爹让你出出名 hhh
-
-![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/个人跑路声明.jpg)
-
-![image](https://github.com/MitilcC/CS2-Internal-Cheat/blob/main/圈钱记录.png)
-
 Free and open-source internal cheat for CS2, written in C++, working on Windows
 免费并且开源的CS2内部辅助，它被用于Windows系统
 
