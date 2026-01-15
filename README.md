@@ -17,9 +17,6 @@ If you like this item you can collect and give me stars
 The project is now being perfected
 这个项目正在完善中
 
-My QQ Group (China) : 942217525
-更新QQ群：942217525
-
 Update Log :
 更新内容：
 
